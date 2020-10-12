@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My notes</string>
+    <string name="btn_hello">Hello World!</string>
+    <string name="title_app">Notes</string>
+    <string name="tools_title_note" translatable="false">Title note</string>
+    <string name="tools_description_note" translatable="false">Description Note</string>
+</resources>
