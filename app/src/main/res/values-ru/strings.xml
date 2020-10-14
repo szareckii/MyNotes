@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Мои заметки</string>
+    <string name="btn_hello">Привет мир!</string>
+    <string name="title_app">Заметки</string>
+</resources>
