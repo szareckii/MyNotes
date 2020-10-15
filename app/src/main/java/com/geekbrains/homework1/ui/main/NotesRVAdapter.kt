@@ -3,16 +3,19 @@ package com.geekbrains.homework1.ui.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.homework1.R
 import com.geekbrains.homework1.data.entity.Note
 import kotlinx.android.synthetic.main.item_note.view.*
 
-class NotesRVAdapter : RecyclerView.Adapter<NotesRVAdapter.ViewHolder>() {
+class NotesRVAdapter(val onClickListener: ((Note) -> Unit)? = null) : RecyclerView.Adapter<NotesRVAdapter.ViewHolder>() {
 
     var notes: List<Note> = listOf()
         set(value) {
             field = value
+            notifyDataSetChanged()
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -28,11 +31,25 @@ class NotesRVAdapter : RecyclerView.Adapter<NotesRVAdapter.ViewHolder>() {
 
     override fun getItemCount() = notes.size
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(note: Note) = with(itemView){
             tv_title.text = note.title
-            tv_text.text = note.description
-            setBackgroundColor(note.color)
+            tv_text.text = note.text
+
+            val color = when(note.color) {
+                Note.Color.WHITE -> R.color.white
+                Note.Color.YELLOW -> R.color.yellow
+                Note.Color.GREEN -> R.color.green
+                Note.Color.BLUE -> R.color.blue
+                Note.Color.RED -> R.color.red
+                Note.Color.VIOLET -> R.color.violet
+            }
+
+            (itemView as CardView).setBackgroundColor(ResourcesCompat.getColor(resources, color, null))
+
+            itemView.setOnClickListener{
+                onClickListener?.invoke(note)
+            }
         }
     }
 }
