@@ -3,4 +3,8 @@
     <string name="app_name">Мои заметки</string>
     <string name="btn_hello">Привет мир!</string>
     <string name="title_app">Заметки</string>
+    <string name="new_note_title">Новая заметка</string>
+    <string name="note_title">Заголовок</string>
+    <string name="note_text">Текст заметки</string>
+    <string name="hint_note_text">Текст заметки</string>
 </resources>
